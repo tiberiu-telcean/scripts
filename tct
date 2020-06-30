@@ -1,5 +1,7 @@
 #!/bin/sh
 
+trap "{ echo Terminated ; exit 255; }" SIGINT SIGTERM ERR EXIT
+
 # -- VARS
 dur=30
 
