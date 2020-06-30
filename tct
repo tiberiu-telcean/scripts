@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# -- VARS
+dur=30
+
+# -- FROM ARGS
+vid="$1"
+flags="-vo=tct $2"
+[ "$2" = "-g" ] && flags=""
+while [ $PLAYING -ne 0 ]; 
+	do qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
+	sleep 30
+	PLAYING=$(pgrep -fc "mpv --no-config https?://.*\..*\..*{/.*}*/ -vo=tct")
+done &
+mpv --no-config "$vid" $flags --profile=sw-fast --vo-tct-height=54 2>/dev/null

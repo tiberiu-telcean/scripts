@@ -1,0 +1,12 @@
+#!/bin/bash
+
+args=("$@")
+flags="-vo=tct"
+vurl=${args[0]}
+vfile=$vurl
+for i in "$@"
+do
+	[ $i = '-d' ] && tdir=$(mktemp -d) && cd $tdir && vfile=$tdir/`youtube-dl --exec "echo {}" $vurl -q`
+	[ $i = '-g' ] && flags="-g"
+done
+tct $vfile $flags

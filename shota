@@ -1,0 +1,9 @@
+#!/bin/bash
+C=""
+for i in "$@"
+do
+	C="$C $i"
+done
+WINDOW=`xdotool search "^$1$" 2>/dev/null | tail -n 1`
+xdotool windowactivate ${WINDOW}
+pgrep -c $1 || $C
