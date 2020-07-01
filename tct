@@ -1,6 +1,6 @@
 #!/bin/sh
 
-trap "{ echo Terminated ; exit 255; }" SIGINT SIGTERM ERR EXIT
+trap "{ echo Terminated ; exit 255; }" INT TERM EXIT
 
 # -- VARS
 dur=30
@@ -9,9 +9,10 @@ dur=30
 vid="$1"
 flags="-vo=tct $2"
 [ "$2" = "-g" ] && flags=""
+PLAYING=1
 while [ $PLAYING -ne 0 ]; 
 	do qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
 	sleep 30
-	PLAYING=$(pgrep -fc "mpv --no-config https?://.*\..*\..*{/.*}*/ -vo=tct")
+	PLAYING=$(pgrep -fc "mpv --no-config .* -vo=tct")
 done &
 mpv --no-config "$vid" $flags --profile=sw-fast --vo-tct-height=54 2>/dev/null
