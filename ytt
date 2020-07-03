@@ -7,6 +7,6 @@ vfile=$vurl
 for i in "$@"
 do
 	[ $i = '-d' ] && tdir=$(mktemp -d) && cd $tdir && vfile=$tdir/`youtube-dl --exec "echo {}" $vurl -q`
-	[ $i = '-g' ] && flags="-g"
+	[ $i = '-g' ] && flags="-g --fs"
 done
 tct $vfile $flags

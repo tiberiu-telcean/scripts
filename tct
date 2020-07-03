@@ -8,7 +8,7 @@ dur=30
 # -- FROM ARGS
 vid="$1"
 flags="-vo=tct $2"
-[ "$2" = "-g" ] && flags=""
+[ "$2" = "-g" ] && flags="$3 $4"
 PLAYING=1
 while [ $PLAYING -ne 0 ]; 
 	do qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
