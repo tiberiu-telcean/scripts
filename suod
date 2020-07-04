@@ -1,0 +1,1 @@
+konsole --profile='video playing' --fullscreen -e "bash /usr/local/scripts/tct /home/rick/a.mp4"
