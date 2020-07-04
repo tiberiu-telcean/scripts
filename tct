@@ -11,7 +11,8 @@ flags="-vo=tct $2"
 [ "$2" = "-g" ] && flags="$3 $4"
 PLAYING=1
 while [ $PLAYING -ne 0 ]; 
-	do qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
+do 
+	qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
 	sleep 30
 	PLAYING=$(pgrep -fc "mpv --no-config .* -vo=tct")
 done &

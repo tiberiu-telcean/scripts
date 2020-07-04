@@ -5,5 +5,4 @@ do
 	C="$C $i"
 done
 WINDOW=`xdotool search "^$1$" 2>/dev/null | tail -n 1`
-xdotool windowactivate ${WINDOW}
-pgrep -c $1 -f || $C
+xdotool windowactivate ${WINDOW} || DISPLAY=:0.0 $C
