@@ -1,0 +1,1 @@
+konsole --fullscreen --profile='video playing' -e "bash -c 'echo +++++++++++ | unimatrix'"
