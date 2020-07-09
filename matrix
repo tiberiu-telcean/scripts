@@ -1,1 +1,4 @@
-konsole --fullscreen --profile='video playing' -e "bash -c 'echo +++++++++++ | unimatrix'"
+#!/bin/sh
+term="st"
+[ "$term" = "st" ] && st -e "unimatrix" && wmctrl -b st -r add,fullscreen
+[ "$term" = "konsole" ] && konsole --fullscreen --profile='video playing' -e "bash -c 'echo +++++++++++ | unimatrix'"
