@@ -1,4 +1,5 @@
 #!/bin/sh
 term="st"
+[ "$1" != "" ] && term="$1"
 [ "$term" = "st" ] && st -e "unimatrix" && wmctrl -b st -r add,fullscreen
 [ "$term" = "konsole" ] && konsole --fullscreen --profile='video playing' -e "bash -c 'echo +++++++++++ | unimatrix'"
