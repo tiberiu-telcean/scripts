@@ -2,9 +2,10 @@
 read c
 file="$(mktemp)"
 chmod +x "$file"
+[ "$1" = "-b" ] && b="$2"
 while [ "$c" != "" ]
 do
-	echo "$c" >>"$file"
+	echo "$b $c" >>"$file"
 	read c
 done
 "$file"
