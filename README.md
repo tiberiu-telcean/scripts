@@ -10,3 +10,5 @@ suod / dc : rickroll that uses tct, when you mispell sudo, cd it plays this, sim
 ytt : script that downloads videos from a site and plays it with tct
 
 matrix : script that launches a fullscreen terminal window with unimatrix.
+
+queue : run programs in a queue

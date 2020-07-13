@@ -1,0 +1,10 @@
+#!/bin/bash
+read c
+file="$(mktemp)"
+chmod +x "$file"
+while [ "$c" != "" ]
+do
+	echo "$c" >>"$file"
+	read c
+done
+"$file"
