@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+print("This changes the scripts based on your shell.")
+print("which shell are you using?")
+shell=input()
+
+file=open("nope", "a")
+
+# ---------- bash
+if(shell == "bash"):
+	file.write("""
+while true
+do
+    dir=$(inotifywait -r -e create $1 | sed -r 's/^.*CREATE(,ISDIR)*\s+(.*)$/\\2/ig')
+    cd $dir
+done
+exit
+""")
+
+# ---------- fish
+
+if(shell == "fish"):
+	file.write("""
+while true
+    set dir (inotifywait -r -e create $1 | sed -r 's/^.*CREATE(,ISDIR)*\s+(.*)$/\\2/ig')
+    $dir
+end
+exit
+""")
+
+

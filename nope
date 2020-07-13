@@ -1,0 +1,10 @@
+#!
+while true
+    set dir (inotifywait -e create . | sed -r 's/^.*CREATE(,ISDIR)*\s+(.*)$/\2/ig')
+    if [ "$dir" != "" ]
+	sleep 2 # When the file is created the permissions may not be set up, so wait.
+    	cd "$dir"
+	exit
+    end
+end
+exit
