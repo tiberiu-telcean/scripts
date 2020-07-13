@@ -14,6 +14,6 @@ while [ $PLAYING -ne 0 ];
 do 
 	qdbus org.freedesktop.ScreenSaver /ScreenSaver SimulateUserActivity
 	sleep 30
-	PLAYING=$(pgrep -fc "mpv --no-config .* -vo=tct")
+	PLAYING=$(pgrep -fc "mpv --no-config .*")
 done &
 mpv --no-config "$vid" $flags --profile=sw-fast --vo-tct-height=54 2>/dev/null
