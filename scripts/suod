@@ -3,4 +3,4 @@ term="konsole"
 file="/home/rick/a.mp4" # change this
 [ "$term" = "st" ] && st -e "/usr/bin/env tct $file" && wmctrl -b st -r add,fullscreen
 [ "$term" = "konsole" ] && konsole --profile='video playing' --fullscreen -e "/usr/bin/env tct /home/rick/a.mp4"
-[ "$term" = "gnome-terminal"] && gnome-terminal --full-screen -e "/usr/bin/env tct /home/rick/a.mp4"
+[ "$term" = "gnome-terminal" ] && gnome-terminal --full-screen -e "/usr/bin/env tct /home/rick/a.mp4"
