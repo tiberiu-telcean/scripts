@@ -1,8 +1,20 @@
 #!/bin/bash
-read c
 file="$(mktemp)"
 chmod +x "$file"
-[ "$1" = "-b" ] && b="$2"
+
+# -- ARGS
+while getopts ":b:" opt; do
+case ${opt} in
+    b ) # process option g
+      b=$OPTARG;;
+    \? ) # Extra flags
+      echo "Usage: queue [-b prepend] < commands">/dev/stderr && exit;;
+  esac
+done
+shift $((OPTIND -1))
+
+# -- RUN
+read c
 while [ "$c" != "" ]
 do
 	echo "$b $c" >>"$file"
