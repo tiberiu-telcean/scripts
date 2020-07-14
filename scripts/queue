@@ -3,12 +3,16 @@ file="$(mktemp)"
 chmod +x "$file"
 
 # -- ARGS
-while getopts ":b:" opt; do
+b=0
+w=0
+while getopts ":b:w:" opt; do
 case ${opt} in
     b ) # process option g
       b=$OPTARG;;
+    w )
+      w=$OPTARG;;
     \? ) # Extra flags
-      echo "Usage: queue [-b prepend] < commands">/dev/stderr && exit;;
+      echo "Usage: queue [-b prepend] [-w duration] < commands">/dev/stderr && exit;;
   esac
 done
 shift $((OPTIND -1))
@@ -17,7 +21,10 @@ shift $((OPTIND -1))
 read c
 while [ "$c" != "" ]
 do
-	echo "$b $c" >>"$file"
+	[ "$b" = 0 ] && echo "$b $c" >>"$file"
+	[ "$b" != 0 ] && echo "$b $c" >>"$file"
+	[ "$w" != "0" ] && echo "sleep $w" >>"$file"
 	read c
 done
 "$file"
+rm "$file"
