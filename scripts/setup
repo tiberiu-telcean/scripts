@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
 import subprocess
+import os
+import sys
 
 print("This changes the scripts based on your shell.")
 print("which shell are you using?")
 shell=input()
 
-file=open("nope", "a")
+file=open(os.path.dirname(sys.argv[0])+"/nope", "w")
 
 # ---------- bash
 if(shell == "bash"):
@@ -19,6 +21,7 @@ do
     [ "$type" = "directory" ] && cd $file && exit
     [ "$type" = "" ] && continue 
     [ "$type" = "directory" ] || xdg-open $file && exit
+done
 exit
 """)
 
