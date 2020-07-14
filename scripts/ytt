@@ -1,12 +1,24 @@
 #!/bin/bash
 
-args=("$@")
-flags="-vo=tct"
-vurl=${args[0]}
-vfile=$vurl
-for i in "$@"
-do
-	[ $i = '-d' ] && tdir=$(mktemp -d) && cd $tdir && vfile=$tdir/`youtube-dl --exec "echo {}" $vurl -q`
-	[ $i = '-g' ] && flags="-g --fs"
+# -- ARGS
+flags=""
+g=0
+d=0
+while getopts ":gd:" opt; do
+case ${opt} in
+    g ) # process option g
+      g=1;;
+    d ) # process option g
+      d=1;;
+    \? ) # Extra flags
+      flags="$flags $OPTARG";;
+esac
 done
-tct $vfile $flags
+shift $((OPTIND -1))
+
+# -- RUN
+vurl=$1
+vfile=$vurl
+[ $d = 1 ] && tdir=$(mktemp -d) && cd $tdir && vfile=$tdir/`youtube-dl --exec "echo {}" $vurl -q`
+[ $g = 1 ] && flags="-g --fs"
+tct "$vfile" $flags
