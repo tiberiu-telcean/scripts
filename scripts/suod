@@ -1,2 +1,11 @@
 #!/bin/sh
-konsole --profile='video playing' --fullscreen -e "bash /usr/local/scripts/tct /home/rick/a.mp4"
+term="konsole"
+file="/home/rick/a.mp4" # change this
+if [ "$term" = "st" ]
+then
+	st -e "/usr/bin/env tct $file"
+	wmctrl -b st -r add,fullscreen
+elif [ "$term" = "konsole" ]
+then
+	konsole --profile='video playing' --fullscreen -e "/usr/bin/env tct /home/rick/a.mp4"
+fi

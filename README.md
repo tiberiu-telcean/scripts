@@ -13,7 +13,7 @@ matrix : script that launches a fullscreen terminal window with unimatrix.
 
 queue : run programs in a queue
 
-nope : wait for a directory to be created and cd into it
+nope : wait for a directory to be created and cd into it.
 	nope requires it to be run in the current shell,
 	so you need to run ". /usr/local/scripts/nope".
 	make an alias in your shell for this.
