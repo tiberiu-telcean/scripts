@@ -7,8 +7,8 @@ import sys
 print("This changes the scripts based on your shell.")
 print("which shell are you using?")
 shell=input()
-
-file=open(os.path.dirname(sys.argv[0])+"/nope", "w")
+path=os.path.dirname(sys.argv[0])
+file=open(path+"/nope", "w")
 
 # ---------- bash
 if(shell == "bash"):
@@ -40,4 +40,4 @@ end
 exit
 """)
 
-subprocess.Popen(['chmod', '+x', 'nope'])
+subprocess.Popen(['chmod', '+x', path+'nope'])
