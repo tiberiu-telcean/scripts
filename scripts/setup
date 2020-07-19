@@ -40,4 +40,4 @@ end
 exit
 """)
 
-subprocess.Popen(['chmod', '+x', path+'nope'])
+subprocess.Popen(['chmod', '+x', path+'/nope'])

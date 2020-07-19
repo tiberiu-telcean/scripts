@@ -4,17 +4,16 @@
 flags=""
 g=0
 d=0
-while getopts ":gd:" opt; do
+flags=""
+while getopts "gd" opt; do
+echo $opt
 case ${opt} in
-    g ) # process option g
-      g=1;;
-    d ) # process option g
-      d=1;;
-    \? ) # Extra flags
-      flags="$flags $OPTARG";;
+    g ) g=1;;
+    d ) d=1;;
+    \? ) flags="$flags $OPTARG";;
 esac
 done
-shift $((OPTIND -1))
+echo $g
 
 # -- RUN
 vurl=$1

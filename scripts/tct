@@ -9,7 +9,7 @@ dur=30
 g=0
 flags=""
 [ "$1" = "" ] && echo "Usage: tct [-g] \"file\" [MPV flags]">/dev/stderr && exit
-while getopts ":g:" opt; do
+while getopts "g:" opt; do
 case ${opt} in
     g ) # process option g
       g=1;;
