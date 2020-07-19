@@ -9,6 +9,8 @@ suod / dc : rickroll that uses tct, when you mispell sudo, cd it plays this, sim
 
 ytt : script that downloads videos from a site and plays it with tct
 
+blur : blurs a transparent window. This only works if you have kde plasma *installed* and some software that makes a window transparent. Disappears when you close a window.
+
 matrix : script that launches a fullscreen terminal window with unimatrix.
 
 queue : run programs in a queue
