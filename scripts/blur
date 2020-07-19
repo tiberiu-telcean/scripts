@@ -1,7 +1,5 @@
 #!/bin/bash
 [ "$1" = "" ] && echo "Usage: blur [program]" && exit
-echo $1
-xdotool search "^$1\$"
 for i in $(xdotool search "^$1")
 do
     xprop -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 -id $i

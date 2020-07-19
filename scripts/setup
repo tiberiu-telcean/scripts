@@ -4,6 +4,7 @@ import subprocess
 import os
 import sys
 
+deps = ['xdotool', 'wmctrl', 'inotify-tools']
 print("This changes the scripts based on your shell.")
 print("which shell are you using?")
 shell=input()
@@ -41,3 +42,5 @@ exit
 """)
 
 subprocess.Popen(['chmod', '+x', path+'/nope'])
+print("Installing dependencies ...")
+subprocess.Popen(['sudo', 'apt', 'install']+deps)
