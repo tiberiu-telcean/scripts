@@ -1,6 +1,6 @@
 #!/bin/sh
 
-trap "{ echo Terminated ; exit 255; }" INT TERM EXIT
+trap "{ exit 255; }" INT TERM EXIT
 
 # -- VARS
 dur=30
