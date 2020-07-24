@@ -5,4 +5,4 @@ do
 	C="$C $i"
 done
 WINDOW=`xdotool search "^$1$" 2>/dev/null | tail -n 1`
-xdotool windowactivate ${WINDOW} || DISPLAY=:0.0 $C
+xdotool windowactivate ${WINDOW} || $C
