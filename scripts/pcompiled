@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dir=~/repos
+[ "$1" != "" ] && dir=$1
+
+n=0
+compiled_programs=$(find $dir -type f | sed 's/.*\///g' | uniq)
+for i in $(find $(echo $PATH | sed 's/:/ /g') | sed 's/.*\///g' | uniq)
+do	
+	[ "$(echo $compiled_programs | grep "$i")" ] && n=$(echo "$n+1" | bc)
+done
+nt=$(find $(echo $PATH | sed 's/:/ /g') | wc -l)
+echo "Number of binaries compiled by you: $n"
+echo "Number of binaries: $nt"
+echo "Percent of binaries compiled by you: $(echo "$n/$nt*100" | bc -l | sed 's/\..*$//')%"
