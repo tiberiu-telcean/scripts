@@ -1,21 +1,8 @@
 # My scripts
 
-tct : terminal video player. wrapper around mpv.
-It uses a dbus interface to make the screen not turn black.
-
-shp : if a program is not running, run it. If it is running, bring it to the front.
-
-suod / dc : rickroll that uses tct, when you mispell sudo, cd it plays this, similar to sl
-
-ytt : script that downloads videos from a site and plays it with tct
-
-pcompiled : Percentage of binaries on your system that are also in a specified directory AKA compiled.
-
 blur : blurs a transparent window. This only works if you have kde plasma *installed* and some software that makes a window transparent. Disappears when you close a window.
 
 matrix : script that launches a fullscreen terminal window with unimatrix.
-
-queue : run programs in a queue
 
 nope : wait for a directory to be created and cd into it.
 	nope requires it to be run in the current shell,
@@ -23,4 +10,18 @@ nope : wait for a directory to be created and cd into it.
 	make an alias in your shell for this.
 	Requires you to install inotify-tools.
 
+pcompiled : Percentage of binaries on your system that are also in a specified directory AKA compiled.
+
+queue : run programs in a queue
+
 setup : Change nope based on your shell.
+
+shp : if a program is not running, run it. If it is running, bring it to the front.
+
+suod / dc : rickroll that uses tct, when you mispell sudo, cd it plays this, similar to sl
+
+tct : terminal video player. wrapper around mpv.
+It uses a dbus interface to make the screen not turn black.
+
+ytt : script that downloads videos from a site and plays it with tct
+
