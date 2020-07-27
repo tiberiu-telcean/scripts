@@ -8,8 +8,8 @@ dur=30
 # -- ARGS
 g=0
 flags=""
-[ "$1" = "" ] && echo "Usage: tct [-g] \"file\" [MPV flags]">/dev/stderr && exit
-while getopts "g:" opt; do
+[ "$1" = "" ] && echo "Usage: tct [-g] [MPV flags] \"file\"">/dev/stderr && exit
+while getopts "g" opt; do
 case ${opt} in
     g ) # process option g
       g=1;;
@@ -19,7 +19,6 @@ case ${opt} in
 done
 shift $((OPTIND -1))
 [ "$g" = 0 ] && flags="$flags -vo=tct"
-vid=$1
 
 # -- RUN
 PLAYING=1
