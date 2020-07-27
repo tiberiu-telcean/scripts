@@ -43,4 +43,4 @@ exit
 
 subprocess.Popen(['chmod', '+x', path+'/nope'])
 print("Installing dependencies ...")
-subprocess.Popen(['sudo', 'apt', 'install']+deps)
+subprocess.Popen(['sudo', 'apt', 'install', '-y']+deps)
