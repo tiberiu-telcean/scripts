@@ -1,5 +1,7 @@
 # My scripts
 
+WARNING: arguments can be a little buggy, 'tct -g "file"' works but 'tct "file" -g' doesn't. All options are before required arguments.
+
 blur : blurs a transparent window. This only works if you have kde plasma *installed* and some software that makes a window transparent. Disappears when you close a window.
 
 matrix : script that launches a fullscreen terminal window with unimatrix.
