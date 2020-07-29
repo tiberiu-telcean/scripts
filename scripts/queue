@@ -5,12 +5,15 @@ chmod +x "$file"
 # -- ARGS
 b=0
 w=0
-while getopts ":b:w:" opt; do
+k=0
+while getopts ":b:w:k" opt; do
 case ${opt} in
     b ) # process option g
       b=$OPTARG;;
     w )
       w=$OPTARG;;
+    k )
+      k=1;;
     \? ) # Extra flags
       echo "Usage: queue [-b prepend] [-w duration] < commands">/dev/stderr && exit;;
   esac
@@ -27,4 +30,5 @@ do
 	read c
 done
 "$file"
-rm "$file"
+[ "$k" = 0 ] && rm "$file"
+[ "$k" = 0 ] || echo "$file"
