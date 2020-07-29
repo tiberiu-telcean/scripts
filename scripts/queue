@@ -21,7 +21,7 @@ shift $((OPTIND -1))
 read c
 while [ "$c" != "" ]
 do
-	[ "$b" = 0 ] && echo "$b $c" >>"$file"
+	[ "$b" = 0 ] && echo "$c" >>"$file"
 	[ "$b" != 0 ] && echo "$b $c" >>"$file"
 	[ "$w" != "0" ] && echo "sleep $w" >>"$file"
 	read c
