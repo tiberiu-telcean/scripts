@@ -8,7 +8,7 @@ dur=30
 # -- ARGS
 g=0
 flags=""
-[ "$1" = "" ] && echo "Usage: tct [-g] [MPV flags] \"file\"">/dev/stderr && exit
+[ "$1" = "" ] && echo "Usage: tct [-g] [MPV flags] \"file\"">/proc/self/fd/2 && exit
 while getopts "g" opt; do
 case ${opt} in
     g ) # process option g

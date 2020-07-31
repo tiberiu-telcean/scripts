@@ -15,7 +15,7 @@ case ${opt} in
     k )
       k=1;;
     \? ) # Extra flags
-      echo "Usage: queue [-b prepend] [-w duration] < commands">/dev/stderr && exit;;
+      echo "Usage: queue [-b prepend] [-w duration] < commands">/proc/self/fd/2 && exit;;
   esac
 done
 shift $((OPTIND -1))
