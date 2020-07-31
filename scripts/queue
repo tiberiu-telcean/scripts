@@ -6,7 +6,8 @@ chmod +x "$file"
 b=0
 w=0
 k=0
-while getopts ":b:w:k" opt; do
+y=0
+while getopts ":b:w:ky" opt; do
 case ${opt} in
     b ) # process option g
       b=$OPTARG;;
@@ -14,6 +15,8 @@ case ${opt} in
       w=$OPTARG;;
     k )
       k=1;;
+    y )
+      y=1;;
     \? ) # Extra flags
       echo "Usage: queue [-b prepend] [-w duration] < commands">/proc/self/fd/2 && exit;;
   esac
@@ -21,6 +24,7 @@ done
 shift $((OPTIND -1))
 
 # -- RUN
+[ "$y" = 1 ] && echo "while [ true ]; do" >>"$file"
 read c
 while [ "$c" != "" ]
 do
@@ -29,6 +33,7 @@ do
 	[ "$w" != "0" ] && echo "sleep $w" >>"$file"
 	read c
 done
+[ "$y" = 1 ] && echo "done" >>"$file"
 "$file"
 [ "$k" = 0 ] && rm "$file"
 [ "$k" = 0 ] || echo "$file"
