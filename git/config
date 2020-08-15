@@ -1,0 +1,3 @@
+[filter "describe"]
+	smudge = describe.rb
+	clean = "sed 's/v[a-zA-Z0-9\\.\\-]*/\\$Describe\\$/g'"

@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+prev=$1
+new=$1
+
+git stash save 1>/dev/null
+rm "$(git rev-parse --show-toplevel)"/.git/index
+git -c core.hooksPath=/dev/null checkout HEAD -f -- "$(git rev-parse --show-toplevel)"
+git stash pop 2>/dev/null
+
+# Ignore hooks to run checkout 2 times.
+# Without this it would be an infinite loop.
