@@ -27,3 +27,5 @@ It uses a dbus interface to make the screen not turn black.
 
 ytt : script that downloads videos from a site and plays it with tct
 
+pause : Open a window that allows you to easily suspend and resume a process.
+NOTE : `sudo pause proc` and not `pause sudo proc`

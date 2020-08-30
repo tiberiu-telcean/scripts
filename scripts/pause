@@ -1,0 +1,72 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+import threading
+import os
+import psutil
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QAction
+from PyQt5.QtCore import Qt, pyqtSlot
+
+running=True
+proc_pid = 0
+
+# Subclass QMainWindow to customise your application's main window
+class MainWindow(QMainWindow):
+    @pyqtSlot()
+    def on_click(self):
+        global running
+        running=not running
+        self.update()
+
+    def __init__(self, *args, **kwargs):
+        global running
+        super(MainWindow, self).__init__(*args, **kwargs)
+
+        self.setWindowTitle("Pause: %s"%(sys.argv[1]))
+        self.setGeometry(100, 100, 300, 200)
+        if(running):
+            self.label = QLabel("Running: %s"%(' '.join(sys.argv[1:])))
+        else:
+            self.label = QLabel("Paused: %s"%(' '.join(sys.argv[1:])))
+
+        # The `Qt` namespace has a lot of attributes to customise
+        # widgets. See: http://doc.qt.io/qt-5/qt.html
+        self.label.setAlignment(Qt.AlignCenter)
+
+        # Set the central widget of the Window. Widget will expand
+        # to take up all the space in the window by default.
+        self.setCentralWidget(self.label)
+
+        self.button = QPushButton('Stop', self)
+        self.button.setToolTip('Pause the program using SIGTSTP')
+        self.button.move(100,50)
+        self.button.clicked.connect(self.on_click)
+
+    def update(self):
+        global proc_pid
+        p = psutil.Process(proc_pid)
+        if(running):
+            self.label.setText("Running: %s"%(' '.join(sys.argv[1:])))
+            self.button.setText("Stop")
+            self.button.setToolTip('pause the program using SIGTSTP')
+            p.resume()
+        else:
+            self.label.setText("Paused: %s"%(' '.join(sys.argv[1:])))
+            self.button.setText("Start")
+            self.button.setToolTip('Start the program using SIGCONT')
+            p.suspend()
+
+app = QApplication(sys.argv)
+
+window = MainWindow()
+window.show()
+def run_in_thread(pid, popen_args):
+    global proc_pid
+    proc = subprocess.Popen(popen_args)
+    proc_pid=proc.pid
+    proc.wait()
+    subprocess.Popen(['kill', str(pid)])
+    return
+thread = threading.Thread(target=run_in_thread, args=(os.getpid(), sys.argv[1:]))
+thread.start()
+app.exec_()
